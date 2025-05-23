@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radial Segmented Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    svg {
+      width: 800px;
+      height: 480px;
+    }
+
+    .segment {
+      fill: #2f61ad;
+      stroke: white;
+      stroke-width: 4;
+      cursor: pointer;
+      transition: fill 0.3s;
+    }
+    .segment:hover {
+      fill: #1d407d;
+    }
+
+    .center {
+      fill: #90c2e7;
+      stroke: #2f61ad;
+      stroke-width: 18;
+      cursor: pointer;
+    }
+
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      fill: white;
+      pointer-events: none;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    /* Animation styles */
+    #segmentsGroup {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform-origin: center;
+    }
+
+    #segmentsGroup.hidden {
+      opacity: 0;
+      transform: scale(0.7);
+      pointer-events: none;
+    }
+
+    #segmentsGroup:not(.hidden) {
+      opacity: 1;
+      transform: scale(1);
+    } 
+  </style>
+</head>
+<body>
+
+<svg viewBox="0 0 500 500">
+  <!-- Group for outer segments and labels, hidden by default -->
+
+  <g id="segmentsGroup" class="hidden">
+    <!-- Segment A -->
+    <a href="page-1.html">
+      <path class="segment" d="M250,250 L236,86 A220,170 0 0,1 331.35,103.65 Z"/>
+      <text x="276" y="128">A</text>
+    </a>
+  
+    <!-- Segment B -->
+    <a href="page-2.html">
+      <path class="segment" d="M250,250 L331.35,103.65 A170,170 0 0,1 390.45,162.75 Z"/>
+      <text x="340" y="155">B</text>
+    </a>
+  
+    <!-- Segment C -->
+    <a href="page-3.html">
+      <path class="segment" d="M250,250 L390.45,162.75 A170,170 0 0,1 420,250 Z"/>
+      <text x="378" y="214">C</text>
+    </a>
+  </g>
+  
+
+  <!-- Center Circle -->
+  <circle class="center" cx="250" cy="250" r="78" onclick="toggleSegments()" />
+  <text x="250" y="250" font-size="20" font-weight="bold" pointer-events="none">Start</text>
+</svg>
+
+<script>
+  let visible = false;
+  function toggleSegments() {
+    const group = document.getElementById('segmentsGroup');
+    visible = !visible;
+    group.classList.toggle('hidden', !visible);
+  }
+</script>
+
+</body>
+</html>
