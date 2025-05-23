@@ -46,6 +46,16 @@
       dominant-baseline: middle;
     }
 
+    /* Remove default focus outline on SVG <a> elements */
+    a:focus {
+      outline: none;
+    }
+
+    /* Remove focus outline on center circle if focused */
+    .center:focus {
+      outline: none;
+    }
+
     /* Animation styles */
     #segmentsGroup {
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -91,7 +101,7 @@
   
 
   <!-- Center Circle -->
-  <circle class="center" cx="250" cy="250" r="78" onclick="toggleSegments()" />
+  <circle class="center" cx="250" cy="250" r="78" tabindex="-1" onclick="toggleSegments()" />
   <text x="250" y="250" font-size="20" font-weight="bold" pointer-events="none">Start</text>
 </svg>
 
